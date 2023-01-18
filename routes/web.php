@@ -19,8 +19,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/hero', function () {
-    return Inertia::render('Hero');
+    return Inertia::render('Hero')->name('hero');
 });
+
 
 
 Route::get('/', function () {
@@ -33,7 +34,11 @@ Route::get('/', function () {
 });
 
 
-Route::inertia('/about', 'AboutComponent');
+Route::inertia('/products', 'Products')->name('products');
+
+Route::inertia('/ressources', 'Ressources')->name('ressources');
+
+Route::inertia('/pricing', 'Pricing')->name('pricing');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
