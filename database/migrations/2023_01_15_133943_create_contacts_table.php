@@ -15,17 +15,24 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('corporation');
-            $table->string('title');
-            $table->string('suffix');
-            $table->string('address');
-            $table->integer('age');
-            $table->bigInteger('phone');
-            $table->string('description');
-            $table->json('options')->nullable();
+            $table->integer('account_id')->index();
+            $table->integer('organizaion_id')->nullable()->index();
+            $table->string('first_name', 25);
+            $table->string('last_name', 25);
+            $table->string('email', 50)->nullable();
+            $table->string('phone', 50)->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('region')->nullable();
+            $table->string('country', 2)->nullable();
+            $table->string('postal_code', 25)->nullable();
+            // $table->string('title');
+            // $table->string('suffix');
+            // $table->integer('age');
+            // $table->string('description');
+            // $table->json('options')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,13 +15,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->enum('status', ['active', 'pending', 'inactive', 'banned']);
+            $table->integer('account_id')->index(); // adds an index
+            $table->string('first_name', 25);
+            $table->string('last_name', 25);
+            $table->string('password')->nullable();
+            $table->string('email', 50)->unique();
+            // $table->enum('status', ['active', 'pending', 'inactive', 'banned']);
+            $table->boolean('admin')->default('false'); // default value
+            $table->string('photo_path')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); //deleted_at (timestamp) for eloquent soft deleted
         });
     }
 
