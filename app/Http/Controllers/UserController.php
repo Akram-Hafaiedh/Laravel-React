@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -35,12 +38,24 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+
+        // validate and store the user
+        User::create(
+            $request->validate([
+                'name' => 'required|max:50',
+                'username' => 'required|unique:users|max:50',
+                'email' => 'required|email|unique:users|max:100',
+                'password' => 'required|min:4|max:50'
+            ])
+        );
+        // User::create($validated);
+
+        return redirect(route('users.index'))->with('success', 'User created!');;
     }
 
     /**
@@ -62,7 +77,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return Inertia::render('Users/Edit');
+        return Inertia::render('Users/Edit', [
+            'user' => new UserResource($user)
+        ]);
     }
 
     /**

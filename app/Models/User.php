@@ -43,6 +43,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'owner' => 'bolean',
     ];
 
     // $request->user()->posts()
@@ -52,7 +53,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-    
+
     public function contacts()
     {
         return $this->belongsToMany(Contact::class);
