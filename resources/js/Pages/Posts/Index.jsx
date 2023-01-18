@@ -10,6 +10,8 @@ export default function Index({ auth, posts }) {
         message: '',
     });
 
+    
+
     const submit = (e) => {
         e.preventDefault();
         post(route('posts.store'), { onSuccess: () => reset() });

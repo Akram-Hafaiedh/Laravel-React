@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 export default function Welcome({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+
     return (
         <>
             <div className="min-h-screen bg-gray-100">
@@ -20,19 +21,19 @@ export default function Welcome({ auth, header, children }) {
                                 </div>
 
                                 <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                    <NavLink href={route('products')} active={route().current('products')}>
                                         Solutions
                                     </NavLink>
                                     {/* <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                         Features
                                     </NavLink> */}
-                                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                    <NavLink href={route('ressources')} active={route().current('ressources')}>
                                         Ressources
                                     </NavLink>
-                                    <NavLink href={route('users.index')} active={route().current('users.index')}>
+                                    <NavLink href={route('posts.index')} active={route().current('posts.index')}>
                                         Blog
                                     </NavLink>
-                                    <NavLink href={route('posts.index')} active={route().current('posts.index')}>
+                                    <NavLink href={route('pricing')} active={route().current('pricing')}>
                                         Pricing
                                     </NavLink>
                                 </div>

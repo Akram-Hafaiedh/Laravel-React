@@ -102,7 +102,7 @@ export default function Authenticated({ auth, header, children }) {
                             Users
                         </ResponsiveNavLink>
                     </div>
-
+                    
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="px-4">
                             <div className="font-medium text-base text-gray-800">
