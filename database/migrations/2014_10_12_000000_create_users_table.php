@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('email', 50)->unique();
             // $table->enum('status', ['active', 'pending', 'inactive', 'banned']);
-            $table->boolean('admin')->default('false'); // default value
+            $table->boolean('admin')->default(false); // default value
             $table->string('photo_path')->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
